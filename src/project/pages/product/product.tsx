@@ -20,7 +20,7 @@ function Product () {
           </li>
           <li className="main-nav__item">
             <a className="main-nav__link" href="#">
-              Гарантии
+              Гарантии!
             </a>
           </li>
           <li className="main-nav__item">
