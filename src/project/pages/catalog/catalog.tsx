@@ -41,7 +41,7 @@ function Catalog() {
           </section>
         </div>
       </main>
-      <Footer
+      <Footer/>
     </div>
   );
 
