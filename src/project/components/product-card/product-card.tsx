@@ -1,11 +1,12 @@
 import { TCamera } from '../../types/product.types';
-import { CAMERA } from '../../mocks/mocks';
+import { Rate } from '../../components/rate/rate';
+
 
 type ProductCardProps = {
   product: TCamera;
 };
 
-function ProductCard({ product = CAMERA }: ProductCardProps) {
+function ProductCard({ product }: ProductCardProps) {
   return (
     <div className="product-card">
       <div className="product-card__img">
@@ -24,15 +25,7 @@ function ProductCard({ product = CAMERA }: ProductCardProps) {
         </picture>
       </div>
       <div className="product-card__info">
-        <div className="rate product-card__rate">
-          <svg width={17} height={16} aria-hidden="true">
-            <use xlinkHref="#icon-full-star" />
-          </svg>
-          <p className="visually-hidden">Рейтинг: {product.rating}</p>
-          <p className="rate__count">
-            <span className="visually-hidden">Всего оценок:</span>{product.reviewCount}
-          </p>
-        </div>
+        <Rate rating={product.rating} />
         <p className="product-card__title">
           {product.name}
         </p>

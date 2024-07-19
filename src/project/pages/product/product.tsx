@@ -3,18 +3,16 @@ import { Footer } from '../../components/footer/footer';
 import { Breadcrumbs } from '../../components/breadcrumbs/breadcrumbs';
 import { Rate } from '../../rate/rate';
 import { TCamera } from '../../types/product.types';
-import { CAMERA, SIMILAR } from '../../mocks/mocks';
+import { CAMERA, SIMILARS } from '../../mocks/mocks';
 import { Review } from '../../components/review/review';
 import { SimilarProduct } from '../../components/similar-product/similar-product';
 
 type ProductProps = {
   camera: TCamera;
-  similarProduct: TCamera;
+  similarProducts: TCamera[];
 };
 
-
-function Product({ camera = CAMERA, similarProduct = SIMILAR }: ProductProps) {
-
+function Product({ camera = CAMERA, similarProducts = SIMILARS }: ProductProps) {
   return (
     <div className="wrapper">
       <Header />
@@ -110,8 +108,7 @@ function Product({ camera = CAMERA, similarProduct = SIMILAR }: ProductProps) {
                 <div className="product-similar__slider">
                   <div className="product-similar__slider-list">
                     <SimilarProduct
-                      similarProduct={similarProduct}
-                      rating={similarProduct.rating}
+                      similarProducts={similarProducts}
                     />
                   </div>
                   <button

@@ -8,6 +8,8 @@ import { Pagination } from '../../components/pagination/pagination';
 import { CAMERAS } from '../../mocks/mocks';
 import { Footer } from '../../components/footer/footer';
 
+
+
 function Catalog() {
   return (
     <div className="wrapper">
@@ -33,7 +35,7 @@ function Catalog() {
                     {CAMERAS.map((camera) => (
                       <ProductCard
                         key={camera.id}
-                        camera={camera}
+                        product={camera}
                       />
                     )
                     )}

@@ -11,7 +11,7 @@ function Rate({ rating }: RateProps) {
       {
         Array.from({ length: rating }, (_) => rating)
           .map((rate) => (
-            <svg width={17} height={16} aria-hidden="true">
+            <svg width={17} height={16} aria-hidden="true" key={rating}>
               <use xlinkHref="#icon-full-star" />{rate}
             </svg>
           ))
@@ -20,7 +20,7 @@ function Rate({ rating }: RateProps) {
       {
         Array.from({ length: ALL_STARS - rating }, (_) => rating)
           .map((rate) => (
-            <svg width={17} height={16} aria-hidden="true">
+            <svg width={17} height={16} aria-hidden="true" key={rating}>
               <use xlinkHref="#icon-star" /> {rate}
             </svg>
           ))
