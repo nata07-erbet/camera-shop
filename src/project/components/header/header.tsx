@@ -2,7 +2,7 @@ import { Logo } from '../logo/logo';
 import { NavMap } from '../../../project/const/const';
 
 function Header() {
-  return(
+  return (
     <header className="header" id="header">
       <div className="container">
         <Logo />
@@ -10,7 +10,7 @@ function Header() {
           <ul className="main-nav__list">
             {Object.values(NavMap)
               .map((item) => (
-                <li className="main-nav__item">
+                <li className="main-nav__item" key={item}>
                   <a className="main-nav__link" href="catalog.html">
                     {item}
                   </a>
@@ -71,4 +71,4 @@ function Header() {
   );
 }
 
-export{ Header }
+export { Header };

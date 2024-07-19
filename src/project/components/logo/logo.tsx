@@ -5,11 +5,11 @@ function Logo() {
       href="index.html"
       aria-label="Переход на главную"
     >
-    <svg width={100} height={36} aria-hidden="true">
-      <use xlinkHref="#icon-logo" />
-    </svg>
+      <svg width={100} height={36} aria-hidden="true">
+        <use xlinkHref="#icon-logo" />
+      </svg>
     </a>
-  )
+  );
 }
 
-export { Logo }
+export { Logo };

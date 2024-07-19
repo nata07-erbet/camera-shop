@@ -3,25 +3,26 @@ const NavMap = {
   Guarantee: 'Гарантии',
   Delivery: 'Доставка',
   About: 'О компании'
- };
+};
 
- const TypeMap = {
+const TypeMap = {
   collection:  'Коллекционная',
   moment: 'Моментальная',
   digital: 'Цифровая',
   film: 'Плёночная'
- } as const;
+} as const;
 
- const CategoryMap = {
+const CategoryMap = {
   video: 'Видеокамера',
   photo: 'Фотоаппарат',
- } as const;
+} as const;
 
- const LevelMap = {
+const LevelMap = {
   zero: 'Нулевой',
   amateur: 'Любительский',
   professional: 'Профессиональный'
- } as const;
+} as const;
 
+const ALL_STARS = 5;
 
- export { NavMap, TypeMap, CategoryMap, LevelMap }
+export { NavMap, TypeMap, CategoryMap, LevelMap, ALL_STARS };

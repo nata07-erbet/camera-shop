@@ -1,4 +1,4 @@
-function Breadcrumbs () {
+function Breadcrumbs() {
   return (
     <div className="breadcrumbs">
       <div className="container">
@@ -19,7 +19,7 @@ function Breadcrumbs () {
         </ul>
       </div>
     </div>
-  )
+  );
 }
 
-export { Breadcrumbs }
+export { Breadcrumbs };

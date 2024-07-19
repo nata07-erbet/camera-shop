@@ -1,4 +1,4 @@
-function Banner () {
+function Banner() {
   return (
     <div className="banner">
       <picture>
@@ -26,8 +26,8 @@ function Banner () {
           Подробнее
         </a>
       </p>
-  </div>
-  )
+    </div>
+  );
 }
 
-export { Banner }
+export { Banner };

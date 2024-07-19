@@ -48,9 +48,9 @@ function Sort () {
           </div>
         </div>
       </div>
-  </form>
-  )
+    </form>
+  );
 }
 
 
-export { Sort }
+export { Sort };

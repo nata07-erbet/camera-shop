@@ -1,14 +1,14 @@
 import { TypeMap, CategoryMap, LevelMap } from '../const/const';
 
-type TypeEnum =  typeof TypeMap[keyof typeof TypeMap];
+type TypeEnum = typeof TypeMap[keyof typeof TypeMap];
 type CategoryEnum = typeof CategoryMap[keyof typeof CategoryMap];
 
 type TCamera = {
   id: number;
   name: string;
-  vendorCode: string
+  vendorCode: string;
   type: TypeEnum;
-  category: CategoryEnum
+  category: CategoryEnum;
   description: string;
   level: typeof LevelMap[keyof typeof LevelMap];
   price: number;

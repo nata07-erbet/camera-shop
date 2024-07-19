@@ -15,7 +15,7 @@ function Catalog() {
       <main>
         <Banner />
         <div className="page-content">
-         <Breadcrumbs />
+          <Breadcrumbs />
           <section className="catalog">
             <div className="container">
               <h1 className="title title--h2">Каталог фото- и видеотехники</h1>
@@ -27,12 +27,16 @@ function Catalog() {
                 </div>
                 <div className="catalog__content">
                   <div className="catalog-sort">
-                   <Sort />
+                    <Sort />
                   </div>
                   <div className="cards catalog__cards">
-                    { CAMERAS. map ((camera) =>
-                         <ProductCard camera= {camera}/>
-                         )}
+                    {CAMERAS.map((camera) => (
+                      <ProductCard
+                        key={camera.id}
+                        camera={camera}
+                      />
+                    )
+                    )}
                   </div>
                   <Pagination />
                 </div>
@@ -41,7 +45,7 @@ function Catalog() {
           </section>
         </div>
       </main>
-      <Footer/>
+      <Footer />
     </div>
   );
 
