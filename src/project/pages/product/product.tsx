@@ -4,7 +4,7 @@ import { Breadcrumbs } from '../../components/breadcrumbs/breadcrumbs';
 import { Rate } from '../../rate/rate';
 import { CAMERA, SIMILARS } from '../../mocks/mocks';
 import { Review } from '../../components/review/review';
-import { SimilarProduct } from '../../components/similar-product/similar-product';
+import { SimilarProductList } from '../../components/similar-product-list/similar-product-list';
 
 function Product() {
   const camera = CAMERA;
@@ -103,11 +103,7 @@ function Product() {
               <div className="container">
                 <h2 className="title title--h3">Похожие товары</h2>
                 <div className="product-similar__slider">
-                  <div className="product-similar__slider-list">
-                    <SimilarProduct
-                      similarProducts={similarProducts}
-                    />
-                  </div>
+                  <SimilarProductList similarProducts={similarProducts} />
                   <button
                     className="slider-controls slider-controls--prev"
                     type="button"

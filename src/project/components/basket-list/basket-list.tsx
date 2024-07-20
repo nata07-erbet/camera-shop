@@ -9,7 +9,10 @@ function BasketList({ basketProducts }: BasketCardProps) {
   return (
     <ul className="basket__list">
       {basketProducts.map((product) => (
-        <BasketCard product={product} />
+        <BasketCard
+          product={product}
+          key={product.id}
+        />
       ))}
 
     </ul>

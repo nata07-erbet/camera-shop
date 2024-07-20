@@ -1,13 +1,13 @@
 import { TCamera } from '../../types/product.types';
-import { ProductCard } from '../../components/product-card/product-card';
+import { ProductCard } from '../product-card/product-card';
 
-type SimilarProductProps = {
+type SimilarProductListProps = {
   similarProducts: TCamera[];
 }
 
-function SimilarProduct({ similarProducts }: SimilarProductProps) {
+function SimilarProductList({ similarProducts }: SimilarProductListProps) {
   return (
-    <div className="product-card is-active">
+    <div className="product-similar__slider-list">
       {similarProducts.map((product) => (
         <ProductCard
           product={product}
@@ -18,4 +18,4 @@ function SimilarProduct({ similarProducts }: SimilarProductProps) {
   );
 }
 
-export { SimilarProduct };
+export { SimilarProductList };
