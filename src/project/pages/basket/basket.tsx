@@ -1,5 +1,6 @@
 import { Header } from '../../components/header/header';
 import { Footer } from '../../components/footer/footer';
+import { Breadcrumbs } from '../../components/breadcrumbs/breadcrumbs';
 
 function Basket() {
   return (
@@ -7,20 +8,7 @@ function Basket() {
       <Header />
       <main>
         <div className="page-content">
-          <div className="breadcrumbs">
-            <div className="container">
-              <ul className="breadcrumbs__list">
-                <li className="breadcrumbs__item">
-                  <a className="breadcrumbs__link" href="index.html">
-                      Главная
-                    <svg width={5} height={8} aria-hidden="true">
-                      <use xlinkHref="#icon-arrow-mini" />
-                    </svg>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
+          <Breadcrumbs />
           <section className="basket">
             <div className="container">
               <h1 className="title title--h2">Корзина</h1>
@@ -49,10 +37,10 @@ function Basket() {
                         <span className="basket-item__number">O78DFGSD832</span>
                       </li>
                       <li className="basket-item__list-item">
-                          Плёночная фотокамера
+                        Плёночная фотокамера
                       </li>
                       <li className="basket-item__list-item">
-                          Любительский уровень
+                        Любительский уровень
                       </li>
                     </ul>
                   </div>
