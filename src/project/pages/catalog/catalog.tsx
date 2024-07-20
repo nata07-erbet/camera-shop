@@ -43,7 +43,6 @@ function Catalog() {
       <Footer />
     </div>
   );
-
 }
 
 export { Catalog };
