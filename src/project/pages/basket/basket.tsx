@@ -58,7 +58,6 @@ function Basket() {
       </main >
       <Footer />
     </div >
-
   );
 }
 

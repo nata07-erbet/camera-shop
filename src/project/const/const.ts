@@ -24,5 +24,7 @@ const LevelMap = {
 } as const;
 
 const ALL_STARS = 5;
+const BASE_URL = 'https://camera-shop.accelerator.htmlacademy.pro/'
+const TIME_OUT  = 5000;
 
-export { NavMap, TypeMap, CategoryMap, LevelMap, ALL_STARS };
+export { NavMap, TypeMap, CategoryMap, LevelMap, ALL_STARS, BASE_URL, TIME_OUT };
