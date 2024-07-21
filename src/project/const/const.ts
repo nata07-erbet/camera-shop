@@ -23,8 +23,16 @@ const LevelMap = {
   professional: 'Профессиональный'
 } as const;
 
-const ALL_STARS = 5;
 const BASE_URL = 'https://camera-shop.accelerator.htmlacademy.pro/'
+
+const ReqRoutes = {
+  Cameras: '/cameras',
+  CameraId: '1',
+  Similar: 'similar',
+} as const;
+
+const ALL_STARS = 5;
+
 const TIME_OUT  = 5000;
 
-export { NavMap, TypeMap, CategoryMap, LevelMap, ALL_STARS, BASE_URL, TIME_OUT };
+export { NavMap, TypeMap, CategoryMap, LevelMap, ALL_STARS, BASE_URL, TIME_OUT, ReqRoutes };

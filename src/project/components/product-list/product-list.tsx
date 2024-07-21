@@ -2,13 +2,13 @@ import { ProductCard } from '../../components/product-card/product-card';
 import { TCamera } from '../../types/product.types';
 
 type ProductListProps = {
-  cameras: TCamera[];
+  getCameras: TCamera[];
 };
 
-function ProductList({ cameras }: ProductListProps) {
+function ProductList({ getCameras }: ProductListProps) {
   return (
     <div className="cards catalog__cards">
-      {cameras.map((camera) => (
+      {getCameras.map((camera) => (
         <ProductCard
           key={camera.id}
           product={camera}

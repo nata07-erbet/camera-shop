@@ -1,17 +1,27 @@
+import { useState } from 'react';
 import { Header } from '../../components/header/header';
 import { Banner } from '../../components/banner/banner';
 import { Breadcrumbs } from '../../components/breadcrumbs/breadcrumbs';
 import { Filter } from '../../components/filter/filter';
 import { Sort } from '../../components/sort/sort';
 import { Pagination } from '../../components/pagination/pagination';
-import { CAMERAS } from '../../mocks/mocks';
 import { Footer } from '../../components/footer/footer';
 import { ProductList } from '../../components/product-list/product-list';
+import { api } from '../../services/services';
+import { ReqRoutes } from '../../const/const';
+import { TCamera } from '../../types/product.types'
 
-
-const cameras = CAMERAS;
 
 function Catalog() {
+  const [getCameras, setGetCameras] = useState<TCamera[]>([]);
+
+  api
+    .get<TCamera[]>(`${ReqRoutes.Cameras}`)
+    .then((response) => setGetCameras(response.data));
+
+  console.log(getCameras);
+
+
   return (
     <div className="wrapper">
       <Header />
@@ -32,7 +42,7 @@ function Catalog() {
                   <div className="catalog-sort">
                     <Sort />
                   </div>
-                  <ProductList cameras={cameras} />
+                  <ProductList getCameras={getCameras} />
                   <Pagination />
                 </div>
               </div>

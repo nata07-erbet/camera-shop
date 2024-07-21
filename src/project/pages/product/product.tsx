@@ -1,14 +1,25 @@
+import { useState } from 'react';
 import { Header } from '../../components/header/header';
 import { Footer } from '../../components/footer/footer';
 import { Breadcrumbs } from '../../components/breadcrumbs/breadcrumbs';
 import { Rate } from '../../rate/rate';
-import { CAMERA, SIMILARS } from '../../mocks/mocks';
 import { Review } from '../../components/review/review';
 import { SimilarProductList } from '../../components/similar-product-list/similar-product-list';
+import { api } from '../../services/services';
+import { TCamera } from '../../types/product.types'
+import { ReqRoutes } from '../../const/const'
 
 function Product() {
-  const camera = CAMERA;
-  const similarProducts = SIMILARS;
+  const [camera, setCamera] = useState<TCamera | null>(null);
+  const [similarProducts, setSimilarProducts] = useState<TCamera[]>([]);
+
+  api
+    .get(`${ReqRoutes.Cameras}/${ReqRoutes.CameraId}/${ReqRoutes.Similar}`)
+    .then((response) => setSimilarProducts(response.data));
+
+  api
+    .get(`${ReqRoutes.Cameras}/${ReqRoutes.CameraId}`)
+    .then((response) => setCamera(response.data));
 
   return (
     <div className="wrapper">
