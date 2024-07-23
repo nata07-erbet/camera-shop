@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Header } from '../../components/header/header';
 import { Banner } from '../../components/banner/banner';
 import { Breadcrumbs } from '../../components/breadcrumbs/breadcrumbs';
@@ -15,11 +15,11 @@ import { TCamera } from '../../types/product.types'
 function Catalog() {
   const [getCameras, setGetCameras] = useState<TCamera[]>([]);
 
-  api
-    .get<TCamera[]>(`${ReqRoutes.Cameras}`)
-    .then((response) => setGetCameras(response.data));
-
-  console.log(getCameras);
+  useEffect(() => {
+    api
+      .get<TCamera[]>(`${ReqRoutes.Cameras}`)
+      .then((response) => setGetCameras(response.data));
+  }, []);
 
 
   return (

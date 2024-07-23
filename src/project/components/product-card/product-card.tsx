@@ -1,14 +1,18 @@
 import { TCamera } from '../../types/product.types';
 import { Rate } from '../../components/rate/rate';
-
-
+import classnames from 'classnames';
 type ProductCardProps = {
   product: TCamera;
 };
 
 function ProductCard({ product }: ProductCardProps) {
+  const productClass = classnames({
+    'product- card': true,
+    'is-active': product
+  });
+
   return (
-    <div className="product-card">
+    <div className={productClass}>
       <div className="product-card__img">
         <picture>
           <source
