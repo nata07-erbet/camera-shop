@@ -7,7 +7,7 @@ import { Rate } from '../../rate/rate';
 import { Review } from '../../components/review/review';
 import { SimilarProductList } from '../../components/similar-product-list/similar-product-list';
 import { api } from '../../services/services';
-import { TCamera } from '../../types/product.types'
+import { TCamera, TReview } from '../../types/product.types'
 import { ReqRoutes } from '../../const/const'
 
 function Product() {
@@ -17,19 +17,19 @@ function Product() {
 
   const [camera, setCamera] = useState<TCamera | null>(null);
   const [similarProducts, setSimilarProducts] = useState<TCamera[]>([]);
+  const [reviews, setReviews] = useState<TReview[]>([]);
 
   useEffect(() => {
-    api
-      .get(`${ReqRoutes.Cameras}/${ReqRoutes.CameraId}`)
+    api.get(`${ReqRoutes.Cameras}/${ReqRoutes.CameraId}`)
       .then((response) => setCamera(response.data));
 
-    console.log(camera);
-
-    api
-      .get(`${ReqRoutes.Cameras}/${ReqRoutes.CameraId}/${ReqRoutes.Similar}`)
+    api.get(`${ReqRoutes.Cameras}/${ReqRoutes.CameraId}/${ReqRoutes.Similar}`)
       .then((response) => setSimilarProducts(response.data));
-  }, []);
 
+    api.get(`${ReqRoutes.Cameras}/${ReqRoutes.CameraId}/${ReqRoutes.Reviews}`)
+      .then((response) => setReviews(response.data));
+
+  }, []);
 
   return (
     <div className="wrapper">
@@ -125,32 +125,38 @@ function Product() {
                 <div className="container">
                   <h2 className="title title--h3">Похожие товары</h2>
                   <div className="product-similar__slider">
-                    <SimilarProductList similarProducts={similarProducts} />
-                    <button
-                      className="slider-controls slider-controls--prev"
-                      type="button"
-                      aria-label="Предыдущий слайд"
-                      disabled
-                    >
-                      <svg width={7} height={12} aria-hidden="true">
-                        <use xlinkHref="#icon-arrow" />
-                      </svg>
-                    </button>
-                    <button
-                      className="slider-controls slider-controls--next"
-                      type="button"
-                      aria-label="Следующий слайд"
-                    >
-                      <svg width={7} height={12} aria-hidden="true">
-                        <use xlinkHref="#icon-arrow" />
-                      </svg>
-                    </button>
+                    {similarProducts && (
+                      <>
+                        <SimilarProductList similarProducts={similarProducts} />
+                        <button
+                          className="slider-controls slider-controls--prev"
+                          type="button"
+                          aria-label="Предыдущий слайд"
+                          disabled
+                        >
+                          <svg width={7} height={12} aria-hidden="true">
+                            <use xlinkHref="#icon-arrow" />
+                          </svg>
+                        </button>
+                        <button
+                          className="slider-controls slider-controls--next"
+                          type="button"
+                          aria-label="Следующий слайд"
+                        >
+                          <svg width={7} height={12} aria-hidden="true">
+                            <use xlinkHref="#icon-arrow" />
+                          </svg>
+                        </button>
+                      </>
+                    )}
+
                   </div>
                 </div>
               </section>
             </div>
             <div className="page-content__section">
-              <Review />
+              {reviews && <Review reviews={reviews} />}
+
             </div>
           </div>
         )}

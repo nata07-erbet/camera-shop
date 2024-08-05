@@ -27,8 +27,9 @@ const BASE_URL = 'https://camera-shop.accelerator.htmlacademy.pro/'
 
 const ReqRoutes = {
   Cameras: '/cameras',
-  CameraId: '1',
+  CameraId: '2',
   Similar: 'similar',
+  Reviews: 'reviews'
 } as const;
 
 const ALL_STARS = 5;

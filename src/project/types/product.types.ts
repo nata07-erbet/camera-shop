@@ -20,4 +20,15 @@ type TCamera = {
   previewImgWebp2x: string;
 };
 
-export type { TCamera };
+type TReview = {
+  id: string
+  createAt: string
+  cameraId: number
+  userName: string
+  advantage: string
+  disadvantage: string
+  review: string
+  rating: number
+}
+
+export type { TCamera, TReview};
