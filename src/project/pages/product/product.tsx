@@ -8,7 +8,9 @@ import { Review } from '../../components/review/review';
 import { SimilarProductList } from '../../components/similar-product-list/similar-product-list';
 import { api } from '../../services/services';
 import { TCamera, TReview } from '../../types/product.types'
-import { ReqRoutes } from '../../const/const'
+import { ReqRoutes } from '../../const/const';
+import { BtnUp } from '../../components/btn-up/btn-up';
+import { PopUpAddReview } from '../../components/pop-up/pop-up-add-review';
 
 function Product() {
   const params = useParams();
@@ -18,6 +20,7 @@ function Product() {
   const [camera, setCamera] = useState<TCamera | null>(null);
   const [similarProducts, setSimilarProducts] = useState<TCamera[]>([]);
   const [reviews, setReviews] = useState<TReview[]>([]);
+  const [isShowPopUpAddReview, setIsShowPopUpAddReview] = useState(false);
 
   useEffect(() => {
     api.get(`${ReqRoutes.Cameras}/${ReqRoutes.CameraId}`)
@@ -162,11 +165,8 @@ function Product() {
         )}
 
       </main>
-      <a className="up-btn" href="#header">
-        <svg width={12} height={18} aria-hidden="true">
-          <use xlinkHref="#icon-arrow2" />
-        </svg>
-      </a>
+      < BtnUp />
+      <PopUpAddReview isShowPopUpAddReview={isShowPopUpAddReview} />
       <Footer />
     </div>
   );

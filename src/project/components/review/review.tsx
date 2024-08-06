@@ -1,4 +1,5 @@
 import { TReview } from '../../types/product.types';
+import { Rate } from '../rate/rate';
 
 type ReviewProps = {
   reviews: TReview[];
@@ -23,24 +24,7 @@ function Review({ reviews }: ReviewProps) {
                   13 апреля
                 </time>
               </div>
-              <div className="rate review-card__rate">
-                <svg width={17} height={16} aria-hidden="true">
-                  <use xlinkHref="#icon-full-star" />
-                </svg>
-                <svg width={17} height={16} aria-hidden="true">
-                  <use xlinkHref="#icon-full-star" />
-                </svg>
-                <svg width={17} height={16} aria-hidden="true">
-                  <use xlinkHref="#icon-full-star" />
-                </svg>
-                <svg width={17} height={16} aria-hidden="true">
-                  <use xlinkHref="#icon-full-star" />
-                </svg>
-                <svg width={17} height={16} aria-hidden="true">
-                  <use xlinkHref="#icon-full-star" />
-                </svg>
-                <p className="visually-hidden">Оценка: {review.rating}</p>
-              </div>
+              <Rate rating={review.rating} />
               <ul className="review-card__list">
                 <li className="item-list">
                   <span className="item-list__title">Достоинства:</span>
