@@ -11,6 +11,7 @@ import { TCamera, TReview } from '../../types/product.types'
 import { ReqRoutes } from '../../const/const';
 import { BtnUp } from '../../components/btn-up/btn-up';
 import { PopUpAddReview } from '../../components/pop-up/pop-up-add-review';
+import { PopUpAddToBasket } from '../../components/pop-up/pop-up-add-to-basket';
 
 function Product() {
   const params = useParams();
@@ -21,6 +22,7 @@ function Product() {
   const [similarProducts, setSimilarProducts] = useState<TCamera[]>([]);
   const [reviews, setReviews] = useState<TReview[]>([]);
   const [isShowPopUpAddReview, setIsShowPopUpAddReview] = useState(false);
+
 
   useEffect(() => {
     api.get(`${ReqRoutes.Cameras}/${ReqRoutes.CameraId}`)
@@ -165,8 +167,15 @@ function Product() {
         )}
 
       </main>
-      < BtnUp />
+      <BtnUp />
       <PopUpAddReview isShowPopUpAddReview={isShowPopUpAddReview} />
+      {camera && (
+        <PopUpAddToBasket
+          isShowPopUpAddToBasket={true}
+          product={camera}
+        />
+      )}
+
       <Footer />
     </div>
   );
