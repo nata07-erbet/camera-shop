@@ -9,11 +9,19 @@ import { Footer } from '../../components/footer/footer';
 import { ProductList } from '../../components/product-list/product-list';
 import { api } from '../../services/services';
 import { ReqRoutes } from '../../const/const';
-import { TCamera } from '../../types/product.types'
-
+import { TCamera } from '../../types/product.types';
+import { PopUpAddToBasket } from '../../components/pop-up/pop-up-add-to-basket';
+import { PopUpAddToBasketSuccess } from '../../components/pop-up/pop-up-add-to-basket-success';
+import { CAMERA } from '../../mocks/mocks';
+import { PopUpRemoveFromBasket } from '../../components/pop-up/pop-up-remove-from-basket';
 
 function Catalog() {
   const [getCameras, setGetCameras] = useState<TCamera[]>([]);
+  const [isShowPopUpAddToBasket, setIsShowPopUpAddToBasket] = useState(false);
+  const [isShowPopUpAddToBasketSuccess, setIsShowPopUpAddToBasketSuccess] = useState(false);
+  const [isShowPopUpRemoveFromBasket, setIsShowPopUpRemoveFromBasket] = useState(false);
+  const product = CAMERA;
+
 
   useEffect(() => {
     api
@@ -49,6 +57,16 @@ function Catalog() {
             </div>
           </section>
         </div>
+        {product && (
+          <PopUpAddToBasket
+            isShowPopUpAddToBasket={isShowPopUpAddToBasket}
+            product={product}
+          />
+        )}
+        <PopUpAddToBasketSuccess
+          isShowPopUpAddToBasketSuccess={isShowPopUpAddToBasketSuccess}
+        />
+        <PopUpRemoveFromBasket isShowPopUpRemoveFromBasket={isShowPopUpRemoveFromBasket} />
       </main>
       <Footer />
     </div>

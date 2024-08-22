@@ -5,7 +5,6 @@ function NotFoundPage() {
       <a>Go to main page</a>
     </>
   );
-
-};
+}
 
 export { NotFoundPage };

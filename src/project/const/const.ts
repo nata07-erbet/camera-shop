@@ -23,7 +23,7 @@ const LevelMap = {
   professional: 'Профессиональный'
 } as const;
 
-const BASE_URL = 'https://camera-shop.accelerator.htmlacademy.pro/'
+const BASE_URL = 'https://camera-shop.accelerator.htmlacademy.pro/';
 
 const ReqRoutes = {
   Cameras: '/cameras',

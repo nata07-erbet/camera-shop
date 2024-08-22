@@ -7,16 +7,15 @@ import { Rate } from '../../rate/rate';
 import { Review } from '../../components/review/review';
 import { SimilarProductList } from '../../components/similar-product-list/similar-product-list';
 import { api } from '../../services/services';
-import { TCamera, TReview } from '../../types/product.types'
+import { TCamera, TReview } from '../../types/product.types';
 import { ReqRoutes } from '../../const/const';
 import { BtnUp } from '../../components/btn-up/btn-up';
 import { PopUpAddReview } from '../../components/pop-up/pop-up-add-review';
-import { PopUpAddToBasket } from '../../components/pop-up/pop-up-add-to-basket';
+
 
 function Product() {
   const params = useParams();
   const cameraId = params.id;
-  console.log(cameraId);
 
   const [camera, setCamera] = useState<TCamera | null>(null);
   const [similarProducts, setSimilarProducts] = useState<TCamera[]>([]);
@@ -169,13 +168,6 @@ function Product() {
       </main>
       <BtnUp />
       <PopUpAddReview isShowPopUpAddReview={isShowPopUpAddReview} />
-      {camera && (
-        <PopUpAddToBasket
-          isShowPopUpAddToBasket={true}
-          product={camera}
-        />
-      )}
-
       <Footer />
     </div>
   );

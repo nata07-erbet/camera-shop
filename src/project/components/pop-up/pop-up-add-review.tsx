@@ -9,7 +9,8 @@ function PopUpAddReview({ isShowPopUpAddReview }: PopUpAddReviewProps) {
     <div className={
       classNames('modal',
         { 'is-active': isShowPopUpAddReview }
-      )}>
+      )
+    }>
       <div className="modal__wrapper">
         <div className="modal__overlay" />
         <div className="modal__content">
@@ -88,7 +89,7 @@ function PopUpAddReview({ isShowPopUpAddReview }: PopUpAddReviewProps) {
                       />
                     </div>
                     <div className="rate__progress">
-                      <span className="rate__stars">0</span> <span>/</span>{" "}
+                      <span className="rate__stars">0</span> <span>/</span>{''}
                       <span className="rate__all-stars">5</span>
                     </div>
                   </div>
@@ -157,7 +158,7 @@ function PopUpAddReview({ isShowPopUpAddReview }: PopUpAddReviewProps) {
                       name="user-comment"
                       minLength={5}
                       placeholder="Поделитесь своим опытом покупки"
-                      defaultValue={""}
+                      defaultValue={''}
                     />
                   </label>
                   <div className="custom-textarea__error">

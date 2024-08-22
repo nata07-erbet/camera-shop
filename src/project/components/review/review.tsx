@@ -17,7 +17,7 @@ function Review({ reviews }: ReviewProps) {
         </div>
         <ul className="review-block__list">
           {reviews.map((review) => (
-            <li className="review-card">
+            <li className="review-card" key={review.id}>
               <div className="review-card__head">
                 <p className="title title--h4">{review.userName}</p>
                 <time className="review-card__data" dateTime={review.createAt}>
