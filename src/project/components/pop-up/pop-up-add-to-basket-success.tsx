@@ -35,7 +35,6 @@ function PopUpAddToBasketSuccess({ isShowPopUpAddToBasketSuccess }: PopUpAddToBa
         </div>
       </div>
     </div>
-
   );
 }
 

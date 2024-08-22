@@ -1,12 +1,16 @@
+import { useState } from 'react';
 import { Header } from '../../components/header/header';
 import { Footer } from '../../components/footer/footer';
 import { Breadcrumbs } from '../../components/breadcrumbs/breadcrumbs';
 import { BasketList } from '../../components/basket-list/basket-list';
 import { CAMERAS } from '../../mocks/mocks';
+import { PopUpThanks } from '../../components/pop-up/pop-up-thanks';
 
 const basketProducts = CAMERAS;
 
 function Basket() {
+  const [isShowPopUpThanks, setIsShowPopUpThanks] = useState(false);
+
   return (
     <div className="wrapper">
       <Header />
@@ -55,6 +59,7 @@ function Basket() {
             </div>
           </section>
         </div>
+        <PopUpThanks isShowPopUpThanks={isShowPopUpThanks} />
       </main >
       <Footer />
     </div >
