@@ -31,4 +31,13 @@ type TReview = {
   rating: number;
 }
 
-export type { TCamera, TReview};
+type TPromo = {
+  id: number;
+  name: string;
+  previewImg: string;
+  previewImg2x: string;
+  previewImgWebp: string;
+  previewImgWebp2x: string;
+}
+
+export type { TCamera, TReview, TPromo};

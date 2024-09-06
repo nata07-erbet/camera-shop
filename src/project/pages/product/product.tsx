@@ -11,37 +11,46 @@ import { TCamera, TReview } from '../../types/product.types';
 import { ReqRoutes } from '../../const/const';
 import { BtnUp } from '../../components/btn-up/btn-up';
 import { PopUpAddReview } from '../../components/pop-up/pop-up-add-review';
-import { PopUpAddReviewSuccess } from '../../components/pop-up/pop-up-add-review-success';
-
+import { ModalReviewSuccess } from '../../components/modal/modal-review-success';
+import { PopUpAddToBasket } from '../../components/pop-up/pop-up-add-to-basket';
 
 function Product() {
-  const params = useParams();
-  const cameraId = params.id;
-
-  const [camera, setCamera] = useState<TCamera | null>(null);
+  const [currentCamera, setCurrentCamera] = useState<TCamera | null>(null);
   const [similarProducts, setSimilarProducts] = useState<TCamera[]>([]);
   const [reviews, setReviews] = useState<TReview[]>([]);
-  const [isShowPopUpAddReview, setIsShowPopUpAddReview] = useState(false);
-  const [isShowPopUpAddReviewSuccess, setIsShowPopUpAddReviewSuccess] = useState(false);
+  const { cameraId } = useParams<{ cameraId: string }>();
 
+  const [isShowPopUpAddReview, setIsShowPopUpAddReview] = useState(true);
+  const [isShowPopUpAddReviewSuccess, setIsShowPopUpAddReviewSuccess] = useState(false);
+  const [isShowPopUpAddToBasket, setIsShowPopUpAddToBasket] = useState(false);
+
+  const handleButtonAddToBasket = () => {
+    setIsShowPopUpAddToBasket((prevState) => !prevState);
+  }
+
+  const handleClickClosePopUp = () => {
+    setIsShowPopUpAddReviewSuccess((prevState) => !prevState);
+  }
 
   useEffect(() => {
-    api.get(`${ReqRoutes.Cameras}/${ReqRoutes.CameraId}`)
-      .then((response) => setCamera(response.data));
+    if (cameraId) {
+      api.get(`${ReqRoutes.Cameras}/${cameraId}`)
+        .then((response) => setCurrentCamera(response.data));
+    }
 
-    api.get(`${ReqRoutes.Cameras}/${ReqRoutes.CameraId}/${ReqRoutes.Similar}`)
+    api.get(`${ReqRoutes.Cameras}/${cameraId}/${ReqRoutes.Similar}`)
       .then((response) => setSimilarProducts(response.data));
 
-    api.get(`${ReqRoutes.Cameras}/${ReqRoutes.CameraId}/${ReqRoutes.Reviews}`)
+    api.get(`${ReqRoutes.Cameras}/${cameraId}/${ReqRoutes.Reviews}`)
       .then((response) => setReviews(response.data));
 
-  }, []);
+  }, [cameraId]);
 
   return (
     <div className="wrapper">
       <Header />
       <main>
-        {camera && (
+        {currentCamera && (
           <>
             <div className="page-content">
               <Breadcrumbs />
@@ -52,29 +61,35 @@ function Product() {
                       <picture>
                         <source
                           type="image/webp"
-                          srcSet={camera.previewImgWebp}
+                          srcSet={`/${currentCamera.previewImgWebp}`}
                         />
                         <img
-                          src={camera.previewImg}
-                          srcSet={camera.previewImg2x}
+                          src={currentCamera.previewImg}
+                          srcSet={currentCamera.previewImg2x}
                           width={560}
                           height={480}
-                          alt={camera.name}
+                          alt={currentCamera.name}
                         />
                       </picture>
                     </div>
                     <div className="product__content">
-                      <h1 className="title title--h3">{camera.name}</h1>
+                      <h1 className="title title--h3">{currentCamera.name}</h1>
                       <Rate />
                       <p className="product__price">
-                        <span className="visually-hidden">Цена:</span>{camera.price} ₽
+                        <span className="visually-hidden">Цена:</span>{currentCamera.price} ₽
                       </p>
-                      <button className="btn btn--purple" type="button">
+
+                      <button
+                        className="btn btn--purple"
+                        type="button"
+                        onClick={handleButtonAddToBasket}
+                      >
                         <svg width={24} height={16} aria-hidden="true">
                           <use xlinkHref="#icon-add-basket" />
                         </svg>
                         Добавить в корзину
                       </button>
+
                       <div className="tabs product__tabs">
                         <div className="tabs__controls product__tabs-controls">
                           <button className="tabs__control" type="button">
@@ -168,7 +183,14 @@ function Product() {
             </div>
             <BtnUp />
             <PopUpAddReview isShowPopUpAddReview={isShowPopUpAddReview} />
-            <PopUpAddReviewSuccess isShowPopUpAddReviewSuccess={isShowPopUpAddReviewSuccess} />
+            <ModalReviewSuccess
+              isShowPopUp={isShowPopUpAddReviewSuccess}
+              onClickClosePopUp={handleClickClosePopUp}
+
+            />
+            <PopUpAddToBasket
+              product={currentCamera}
+              isShowPopUpAddToBasket={isShowPopUpAddToBasket} />
           </>
         )}
       </main>

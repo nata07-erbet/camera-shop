@@ -1,40 +1,57 @@
 import { useState, useEffect } from 'react';
 import { Header } from '../../components/header/header';
-import { Banner } from '../../components/banner/banner';
 import { Breadcrumbs } from '../../components/breadcrumbs/breadcrumbs';
 import { Filter } from '../../components/filter/filter';
 import { Sort } from '../../components/sort/sort';
 import { Pagination } from '../../components/pagination/pagination';
 import { Footer } from '../../components/footer/footer';
 import { ProductList } from '../../components/product-list/product-list';
+import { SliderSwiper } from '../../components/slider-swiper/slider-swiper';
 import { api } from '../../services/services';
 import { ReqRoutes } from '../../const/const';
-import { TCamera } from '../../types/product.types';
-import { PopUpAddToBasket } from '../../components/pop-up/pop-up-add-to-basket';
+import { TCamera, TPromo } from '../../types/product.types';
+import { ModalAddToBasket } from '../../components/modal/modal-add-to-basket';
+import { } from '../../components/pop-up/pop-up-add-to-basket';
 import { PopUpAddToBasketSuccess } from '../../components/pop-up/pop-up-add-to-basket-success';
-import { CAMERA } from '../../mocks/mocks';
 import { PopUpRemoveFromBasket } from '../../components/pop-up/pop-up-remove-from-basket';
 
 function Catalog() {
-  const [getCameras, setGetCameras] = useState<TCamera[]>([]);
+
+  const [cameras, setCameras] = useState<TCamera[]>([]);
+  const [promo, setPromo] = useState<TPromo[]>([]);
+  const [selectId, setSelectId] = useState<TCamera['id'] | null>(null);
   const [isShowPopUpAddToBasket, setIsShowPopUpAddToBasket] = useState(false);
   const [isShowPopUpAddToBasketSuccess, setIsShowPopUpAddToBasketSuccess] = useState(false);
   const [isShowPopUpRemoveFromBasket, setIsShowPopUpRemoveFromBasket] = useState(false);
-  const product = CAMERA;
+  const handleClickClosePopUp = () => {
+    setIsShowPopUpAddToBasket((prevState) => !prevState);
+  };
 
+  const handleButtonBuyClick = (productId: TCamera['id']) => {
+    setSelectId(productId);
+    setIsShowPopUpAddToBasket(true);
+  };
 
   useEffect(() => {
     api
       .get<TCamera[]>(`${ReqRoutes.Cameras}`)
-      .then((response) => setGetCameras(response.data));
+      .then((response) => setCameras(response.data));
+
+    api
+      .get<TPromo[]>(`${ReqRoutes.Promo}`)
+      .then((response) => setPromo(response.data));
+
   }, []);
+
+  const productById = cameras.find((camera) => camera.id === selectId);
+  console.log(productById);
 
 
   return (
     <div className="wrapper">
       <Header />
       <main>
-        <Banner />
+        <SliderSwiper promo={promo} />
         <div className="page-content">
           <Breadcrumbs />
           <section className="catalog">
@@ -50,17 +67,21 @@ function Catalog() {
                   <div className="catalog-sort">
                     <Sort />
                   </div>
-                  <ProductList getCameras={getCameras} />
+                  {cameras && <ProductList
+                    getCameras={cameras}
+                    onButtonBuyClick={handleButtonBuyClick}
+                  />}
                   <Pagination />
                 </div>
               </div>
             </div>
           </section>
         </div>
-        {product && (
-          <PopUpAddToBasket
-            isShowPopUpAddToBasket={isShowPopUpAddToBasket}
-            product={product}
+        {productById && (
+          <ModalAddToBasket
+            isShowPopUp={isShowPopUpAddToBasket}
+            onClickClosePopUp={handleClickClosePopUp}
+            product={productById}
           />
         )}
         <PopUpAddToBasketSuccess

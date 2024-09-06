@@ -25,15 +25,22 @@ const LevelMap = {
 
 const BASE_URL = 'https://camera-shop.accelerator.htmlacademy.pro/';
 
+const AppRoutes = {
+  Cameras: '/',
+  CameraById: '/camera/:cameraId',
+  Basket: '/basket',
+};
+
 const ReqRoutes = {
   Cameras: '/cameras',
-  CameraId: '2',
+  CameraId: 'cameraId',
   Similar: 'similar',
-  Reviews: 'reviews'
+  Reviews: 'reviews',
+  Promo: '/promo'
 } as const;
 
 const ALL_STARS = 5;
 
 const TIME_OUT  = 5000;
 
-export { NavMap, TypeMap, CategoryMap, LevelMap, ALL_STARS, BASE_URL, TIME_OUT, ReqRoutes };
+export { NavMap, TypeMap, CategoryMap, LevelMap, ALL_STARS, BASE_URL, TIME_OUT, ReqRoutes, AppRoutes };

@@ -1,15 +1,26 @@
+import { Link, generatePath } from 'react-router-dom';
 import { TCamera } from '../../types/product.types';
 import { Rate } from '../../components/rate/rate';
 import classnames from 'classnames';
+
 type ProductCardProps = {
   product: TCamera;
+  onButtonBuyClick?: (id: TCamera['id']) => void;
 };
 
-function ProductCard({ product }: ProductCardProps) {
+function ProductCard({ product, onButtonBuyClick }: ProductCardProps) {
+  const href = generatePath('/camera/:cameraId',
+    { cameraId: product.id.toString() }
+  );
+
   const productClass = classnames({
     'product- card': true,
     'is-active': product
   });
+
+  const handleButtonClick = () => {
+    onButtonBuyClick?.(product.id);
+  }
 
   return (
     <div className={productClass}>
@@ -17,8 +28,8 @@ function ProductCard({ product }: ProductCardProps) {
         <picture>
           <source
             type='image/webp'
-            srcSet={product.previewImgWebp}
-          />
+            srcSet={`/${product.previewImgWebp}`}
+          />`
           <img
             src={product.previewImg}
             srcSet={product.previewImg2x}
@@ -41,12 +52,13 @@ function ProductCard({ product }: ProductCardProps) {
         <button
           className="btn btn--purple product-card__btn"
           type="button"
+          onClick={handleButtonClick}
         >
           Купить
         </button>
-        <a className="btn btn--transparent" href="#">
+        <Link className="btn btn--transparent" to={href}>
           Подробнее
-        </a>
+        </Link>
       </div>
     </div>
   );

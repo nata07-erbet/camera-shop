@@ -1,0 +1,5 @@
+function closePopUp () => {
+  
+};
+
+export { closePopUp}
