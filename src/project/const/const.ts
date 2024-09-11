@@ -29,7 +29,7 @@ const AppRoutes = {
   Cameras: '/',
   CameraById: '/camera/:cameraId',
   Basket: '/basket',
-};
+} as const;
 
 const ReqRoutes = {
   Cameras: '/cameras',
@@ -41,6 +41,6 @@ const ReqRoutes = {
 
 const ALL_STARS = 5;
 
-const TIME_OUT  = 5000;
+const TIME_OUT = 5000;
 
 export { NavMap, TypeMap, CategoryMap, LevelMap, ALL_STARS, BASE_URL, TIME_OUT, ReqRoutes, AppRoutes };

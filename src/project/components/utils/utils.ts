@@ -1,5 +1,0 @@
-function closePopUp () => {
-  
-};
-
-export { closePopUp}

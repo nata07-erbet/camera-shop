@@ -3,24 +3,22 @@ import { PopUpWrapper } from '../pop-up/pop-up-wrapper';
 import { TCamera } from '../../types/product.types';
 
 type ModalAddToBasketProps = {
-  isShowPopUp: boolean,
-  onClickClosePopUp: () => void,
-  product: TCamera
+  isShowPopUp: boolean;
+  onClose?: () => void;
+  product: TCamera;
+  onButtonAddToBasketClick?: () => void;
 };
 
-function ModalAddToBasket({ isShowPopUp, onClickClosePopUp, product }: ModalAddToBasketProps) {
+function ModalAddToBasket({ isShowPopUp, onClose, product, onButtonAddToBasketClick }: ModalAddToBasketProps) {
 
   return (
     <PopUpWrapper
       isShowPopUp={isShowPopUp}
       isNarrow={false}
-      onClose={onClickClosePopUp}
-      children={
-        <PopUpAddToBasket
-          product={product}
-        />}
+      onClose={onClose}
+      children={<PopUpAddToBasket product={product} onButtonAddToBasketClick={onButtonAddToBasketClick} />}
     />
   );
 }
 
-export { ModalAddToBasket }
+export { ModalAddToBasket };

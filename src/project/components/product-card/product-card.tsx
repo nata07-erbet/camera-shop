@@ -20,7 +20,7 @@ function ProductCard({ product, onButtonBuyClick }: ProductCardProps) {
 
   const handleButtonClick = () => {
     onButtonBuyClick?.(product.id);
-  }
+  };
 
   return (
     <div className={productClass}>

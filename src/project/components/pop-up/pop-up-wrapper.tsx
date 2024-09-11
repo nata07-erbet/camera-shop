@@ -1,11 +1,11 @@
-import { useEffect } from 'react'
+import { useEffect } from 'react';
 import classNames from 'classnames';
 import { PropsWithChildren } from 'react';
 
 type PopUpWrapperProps = PropsWithChildren<{
-  isShowPopUp: boolean,
-  isNarrow: boolean,
-  onClose?: () => void,
+  isShowPopUp: boolean;
+  isNarrow: boolean;
+  onClose?: () => void;
 }>
 
 function PopUpWrapper({ isShowPopUp, isNarrow, onClose, children }: PopUpWrapperProps) {
@@ -14,7 +14,7 @@ function PopUpWrapper({ isShowPopUp, isNarrow, onClose, children }: PopUpWrapper
   const handleClickClosePopUp = () => {
     onClose?.();
     !isShowPopUp;
-  }
+  };
 
   const handleEscKeyDown = (evt: KeyboardEvent) => {
     if (evt.key === 'Escape') {
@@ -27,8 +27,6 @@ function PopUpWrapper({ isShowPopUp, isNarrow, onClose, children }: PopUpWrapper
 
     return () => document.removeEventListener('keydown', handleEscKeyDown);
   }, [handleEscKeyDown]);
-
-
 
   return (
     <div className={modalClass}>
@@ -52,4 +50,4 @@ function PopUpWrapper({ isShowPopUp, isNarrow, onClose, children }: PopUpWrapper
   );
 }
 
-export { PopUpWrapper }
+export { PopUpWrapper };

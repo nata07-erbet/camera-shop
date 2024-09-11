@@ -26,11 +26,11 @@ function Product() {
 
   const handleButtonAddToBasket = () => {
     setIsShowPopUpAddToBasket((prevState) => !prevState);
-  }
+  };
 
   const handleClickClosePopUp = () => {
     setIsShowPopUpAddReviewSuccess((prevState) => !prevState);
-  }
+  };
 
   useEffect(() => {
     if (cameraId) {

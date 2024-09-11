@@ -33,7 +33,7 @@ function Banner({ camera }: BannerProps) {
         </a>
       </p>
     </div >
-  )
+  );
 }
 
 export { Banner };

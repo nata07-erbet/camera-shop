@@ -16,6 +16,6 @@ function PopUpAddReviewSuccess() {
       </div>
     </>
   );
-};
+}
 
 export { PopUpAddReviewSuccess };

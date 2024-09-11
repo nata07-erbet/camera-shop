@@ -12,8 +12,7 @@ import { ReqRoutes } from '../../const/const';
 import { TCamera, TPromo } from '../../types/product.types';
 import { ModalAddToBasket } from '../../components/modal/modal-add-to-basket';
 import { } from '../../components/pop-up/pop-up-add-to-basket';
-import { PopUpAddToBasketSuccess } from '../../components/pop-up/pop-up-add-to-basket-success';
-import { PopUpRemoveFromBasket } from '../../components/pop-up/pop-up-remove-from-basket';
+import { ModalAddToBasketSuccess } from '../../components/modal/modal-add-to-basket-success';
 
 function Catalog() {
 
@@ -22,14 +21,20 @@ function Catalog() {
   const [selectId, setSelectId] = useState<TCamera['id'] | null>(null);
   const [isShowPopUpAddToBasket, setIsShowPopUpAddToBasket] = useState(false);
   const [isShowPopUpAddToBasketSuccess, setIsShowPopUpAddToBasketSuccess] = useState(false);
-  const [isShowPopUpRemoveFromBasket, setIsShowPopUpRemoveFromBasket] = useState(false);
+
   const handleClickClosePopUp = () => {
-    setIsShowPopUpAddToBasket((prevState) => !prevState);
+    setIsShowPopUpAddToBasket(false);
+    setIsShowPopUpAddToBasketSuccess(false);
   };
 
   const handleButtonBuyClick = (productId: TCamera['id']) => {
     setSelectId(productId);
     setIsShowPopUpAddToBasket(true);
+  };
+
+  const handleClickAddToBasket = () => {
+    setIsShowPopUpAddToBasketSuccess((prevState) => !prevState);
+    setIsShowPopUpAddToBasket(false);
   };
 
   useEffect(() => {
@@ -80,14 +85,15 @@ function Catalog() {
         {productById && (
           <ModalAddToBasket
             isShowPopUp={isShowPopUpAddToBasket}
-            onClickClosePopUp={handleClickClosePopUp}
+            onClose={handleClickClosePopUp}
             product={productById}
+            onButtonAddToBasketClick={handleClickAddToBasket}
           />
         )}
-        <PopUpAddToBasketSuccess
-          isShowPopUpAddToBasketSuccess={isShowPopUpAddToBasketSuccess}
+        <ModalAddToBasketSuccess
+          isShowPopUp={isShowPopUpAddToBasketSuccess}
+          onClose={handleClickClosePopUp}
         />
-        <PopUpRemoveFromBasket isShowPopUpRemoveFromBasket={isShowPopUpRemoveFromBasket} />
       </main>
       <Footer />
     </div>

@@ -25,7 +25,7 @@ function SliderSwiper({ promo }: BannerProps) {
     >
       <>
         {promo.map((camera) => (
-          <SwiperSlide >
+          <SwiperSlide key={camera.id}>
             <Banner camera={camera} />
           </SwiperSlide>
 

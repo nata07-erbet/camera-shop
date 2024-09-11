@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 
 type IsShowPopUpThanksProps = {
-  isShowPopUpThanks: boolean,
+  isShowPopUpThanks: boolean;
 };
 
 function PopUpThanks({ isShowPopUpThanks }: IsShowPopUpThanksProps) {

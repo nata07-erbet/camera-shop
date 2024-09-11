@@ -9,8 +9,8 @@ function PopUpAddReview({ isShowPopUpAddReview }: PopUpAddReviewProps) {
     <div className={
       classNames('modal',
         { 'is-active': isShowPopUpAddReview }
-      )
-    }>
+      )}
+    >
       <div className="modal__wrapper">
         <div className="modal__overlay" />
         <div className="modal__content">

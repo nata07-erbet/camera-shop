@@ -2,9 +2,14 @@ import { TCamera } from '../../types/product.types';
 
 type PopUpAddToBasketProps = {
   product: TCamera;
+  onButtonAddToBasketClick?: () => void;
 };
 
-function PopUpAddToBasket({ product }: PopUpAddToBasketProps) {
+function PopUpAddToBasket({ product, onButtonAddToBasketClick }: PopUpAddToBasketProps) {
+  const handleButtonAddToBasket = () => {
+    onButtonAddToBasketClick?.();
+  };
+
   return (
     <>
       <p className="title title--h4">Добавить товар в корзину</p>
@@ -43,6 +48,7 @@ function PopUpAddToBasket({ product }: PopUpAddToBasketProps) {
         <button
           className="btn btn--purple modal__btn modal__btn--fit-width"
           type="button"
+          onClick={handleButtonAddToBasket}
         >
           <svg width={24} height={16} aria-hidden="true">
             <use xlinkHref="#icon-add-basket" />

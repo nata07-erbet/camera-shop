@@ -123,9 +123,8 @@ const SIMILARS: TCamera[] = [
   },
 ];
 
-
 const PROMO = [
-{
+  {
     'id': 7,
     'name': 'Look 54',
     'previewImg': 'img/content/promo-look-54.jpg',

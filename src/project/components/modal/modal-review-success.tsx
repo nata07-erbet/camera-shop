@@ -3,7 +3,7 @@ import { PopUpAddReviewSuccess } from '../pop-up/pop-up-add-review-success';
 
 type ModalReviewSuccessProps = {
   isShowPopUp: boolean;
-  onClickClosePopUp: () => void,
+  onClickClosePopUp: () => void;
 }
 
 function ModalReviewSuccess({ isShowPopUp, onClickClosePopUp }: ModalReviewSuccessProps) {
@@ -12,8 +12,8 @@ function ModalReviewSuccess({ isShowPopUp, onClickClosePopUp }: ModalReviewSucce
       isShowPopUp={isShowPopUp}
       onClose={onClickClosePopUp}
       children={<PopUpAddReviewSuccess />}
-    />
+      isNarrow={true} />
   );
 }
 
-export { ModalReviewSuccess }
+export { ModalReviewSuccess };

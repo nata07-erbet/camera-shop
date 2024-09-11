@@ -3,13 +3,27 @@ import { Header } from '../../components/header/header';
 import { Footer } from '../../components/footer/footer';
 import { Breadcrumbs } from '../../components/breadcrumbs/breadcrumbs';
 import { BasketList } from '../../components/basket-list/basket-list';
-import { CAMERAS } from '../../mocks/mocks';
-import { PopUpThanks } from '../../components/pop-up/pop-up-thanks';
-
-const basketProducts = CAMERAS;
+import { ModalRemoveFromBasket } from '../../components/modal/modal-remove-from-basket';
+import { CAMERAS, CAMERA } from '../../mocks/mocks';
+import { TCamera } from '../../types/product.types';
 
 function Basket() {
-  const [isShowPopUpThanks, setIsShowPopUpThanks] = useState(false);
+  const basketProducts = CAMERAS;
+  const basketProduct = CAMERA;
+
+  const [isShowModalRemoveFromBasket, setIsShowModalRemoveFromBasket] = useState(false);
+  const [currentId, setCurrentId] = useState<TCamera['id'] | null>(null);
+  const [isShowItem, setIsShowItem] = useState(true);
+
+  const handleButtonCloseClick = () => {
+    setIsShowModalRemoveFromBasket((prevState) => !prevState);
+  };
+
+  const handleClickDeleteProduct = () => {
+    setCurrentId(currentId);
+    setIsShowModalRemoveFromBasket(false);
+    setIsShowItem((prevState) => !prevState);
+  }
 
   return (
     <div className="wrapper">
@@ -20,7 +34,11 @@ function Basket() {
           <section className="basket">
             <div className="container">
               <h1 className="title title--h2">Корзина</h1>
-              <BasketList basketProducts={basketProducts} />
+              <BasketList
+                basketProducts={basketProducts}
+                onClickDeleteProduct={handleClickDeleteProduct}
+                isShowItem={isShowItem}
+              />
               <div className="basket__summary">
                 <div className="basket__promo">
                   <p className="title title--h4">
@@ -59,7 +77,11 @@ function Basket() {
             </div>
           </section>
         </div>
-        <PopUpThanks isShowPopUpThanks={isShowPopUpThanks} />
+        <ModalRemoveFromBasket
+          isShowPopUp={isShowModalRemoveFromBasket}
+          product={basketProduct}
+          onClose={handleButtonCloseClick}
+        />
       </main >
       <Footer />
     </div >
