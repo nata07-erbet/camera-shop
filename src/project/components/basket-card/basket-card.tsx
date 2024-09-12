@@ -10,7 +10,7 @@ function BasketCard({ product, onClickDeleteProduct, isShowItem }: BasketCardPro
 
   const handleButtonDeleteProduct = () => {
     onClickDeleteProduct?.(product.id);
-  }
+  };
 
   return (
     <>

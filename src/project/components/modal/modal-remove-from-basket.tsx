@@ -19,4 +19,4 @@ function ModalRemoveFromBasket({ isShowPopUp, onClose, product }: ModalRemoveFro
   );
 }
 
-export { ModalRemoveFromBasket }
+export { ModalRemoveFromBasket };

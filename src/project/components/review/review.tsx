@@ -3,15 +3,25 @@ import { Rate } from '../rate/rate';
 
 type ReviewProps = {
   reviews: TReview[];
+  onClick?: () => void;
 };
 
-function Review({ reviews }: ReviewProps) {
+function Review({ reviews, onClick }: ReviewProps) {
+
+  const handleClickButtonReview = () => {
+    onClick?.();
+  };
+
   return (
     <section className="review-block">
       <div className="container">
         <div className="page-content__headed">
           <h2 className="title title--h3">Отзывы</h2>
-          <button className="btn" type="button">
+          <button
+            className="btn"
+            type="button"
+            onClick={handleClickButtonReview}
+          >
             Оставить свой отзыв
           </button>
         </div>

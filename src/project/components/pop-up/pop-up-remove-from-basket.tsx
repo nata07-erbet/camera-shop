@@ -6,12 +6,9 @@ type PopUpRemoveFromBasketProps = {
   product: TCamera;
 };
 
-
-
 function PopUpRemoveFromBasket({ product }: PopUpRemoveFromBasketProps) {
 
   const handleButtonRemoveItem = () => {
-    console.log('Remove from basket');
   };
 
   return (

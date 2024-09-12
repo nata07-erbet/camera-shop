@@ -23,7 +23,7 @@ function Basket() {
     setCurrentId(currentId);
     setIsShowModalRemoveFromBasket(false);
     setIsShowItem((prevState) => !prevState);
-  }
+  };
 
   return (
     <div className="wrapper">

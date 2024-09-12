@@ -10,9 +10,9 @@ import { api } from '../../services/services';
 import { TCamera, TReview } from '../../types/product.types';
 import { ReqRoutes } from '../../const/const';
 import { BtnUp } from '../../components/btn-up/btn-up';
-import { PopUpAddReview } from '../../components/pop-up/pop-up-add-review';
+import { ModalReview } from '../../components/modal/modal-review';
 import { ModalReviewSuccess } from '../../components/modal/modal-review-success';
-import { PopUpAddToBasket } from '../../components/pop-up/pop-up-add-to-basket';
+import { ModalAddToBasket } from '../../components/modal/modal-add-to-basket';
 
 function Product() {
   const [currentCamera, setCurrentCamera] = useState<TCamera | null>(null);
@@ -20,7 +20,7 @@ function Product() {
   const [reviews, setReviews] = useState<TReview[]>([]);
   const { cameraId } = useParams<{ cameraId: string }>();
 
-  const [isShowPopUpAddReview, setIsShowPopUpAddReview] = useState(true);
+  const [isShowPopUpAddReview, setIsShowPopUpAddReview] = useState(false);
   const [isShowPopUpAddReviewSuccess, setIsShowPopUpAddReviewSuccess] = useState(false);
   const [isShowPopUpAddToBasket, setIsShowPopUpAddToBasket] = useState(false);
 
@@ -28,7 +28,12 @@ function Product() {
     setIsShowPopUpAddToBasket((prevState) => !prevState);
   };
 
+  const handleClickButtonAddReview = () => {
+    setIsShowPopUpAddReview(true);
+  };
+
   const handleClickClosePopUp = () => {
+    setIsShowPopUpAddReview((prevState) => !prevState);
     setIsShowPopUpAddReviewSuccess((prevState) => !prevState);
   };
 
@@ -177,20 +182,26 @@ function Product() {
                 </section>
               </div>
               <div className="page-content__section">
-                {reviews && <Review reviews={reviews} />}
+                {reviews && <Review reviews={reviews} onClick={handleClickButtonAddReview} />}
 
               </div>
             </div>
             <BtnUp />
-            <PopUpAddReview isShowPopUpAddReview={isShowPopUpAddReview} />
+            <ModalAddToBasket
+              isShowPopUp={isShowPopUpAddToBasket}
+              onClose={handleClickClosePopUp}
+              product={currentCamera}
+              onButtonAddToBasketClick={handleButtonAddToBasket}
+            />
+            <ModalReview
+              isShowPopUp={isShowPopUpAddReview}
+              onClose={handleClickClosePopUp}
+            />
             <ModalReviewSuccess
               isShowPopUp={isShowPopUpAddReviewSuccess}
-              onClickClosePopUp={handleClickClosePopUp}
-
+              onClose={handleClickClosePopUp}
             />
-            <PopUpAddToBasket
-              product={currentCamera}
-              isShowPopUpAddToBasket={isShowPopUpAddToBasket} />
+
           </>
         )}
       </main>

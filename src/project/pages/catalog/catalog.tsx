@@ -49,8 +49,6 @@ function Catalog() {
   }, []);
 
   const productById = cameras.find((camera) => camera.id === selectId);
-  console.log(productById);
-
 
   return (
     <div className="wrapper">
