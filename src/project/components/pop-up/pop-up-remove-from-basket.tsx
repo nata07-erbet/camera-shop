@@ -4,11 +4,13 @@ import { Link } from 'react-router-dom';
 
 type PopUpRemoveFromBasketProps = {
   product: TCamera;
+  onDeleteItem?: (id: TCamera['id']) => void;
 };
 
-function PopUpRemoveFromBasket({ product }: PopUpRemoveFromBasketProps) {
+function PopUpRemoveFromBasket({ product, onDeleteItem }: PopUpRemoveFromBasketProps) {
 
-  const handleButtonRemoveItem = () => {
+  const handleButtonRemoveItem = (itemId: TCamera['id']) => {
+    onDeleteItem?.(itemId);
   };
 
   return (

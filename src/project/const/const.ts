@@ -41,6 +41,6 @@ const ReqRoutes = {
 
 const ALL_STARS = 5;
 
-const TIME_OUT = 5000;
+const TIME_OUT = 3000;
 
-export { NavMap, TypeMap, CategoryMap, LevelMap, ALL_STARS, BASE_URL, TIME_OUT, ReqRoutes, AppRoutes };
+export { NavMap, TypeMap, CategoryMap, LevelMap, ALL_STARS, All_REVIEWS, BASE_URL, TIME_OUT, ReqRoutes, AppRoutes };

@@ -9,11 +9,11 @@ type PopUpWrapperProps = PropsWithChildren<{
 }>
 
 function PopUpWrapper({ isShowPopUp, isNarrow, onClose, children }: PopUpWrapperProps) {
+
   const modalClass = classNames('modal', { 'is-active': isShowPopUp }, { 'modal--narrow': isNarrow });
 
   const handleClickClosePopUp = () => {
     onClose?.();
-    !isShowPopUp;
   };
 
   const handleEscKeyDown = (evt: KeyboardEvent) => {

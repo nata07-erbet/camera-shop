@@ -16,8 +16,9 @@ function ModalAddToBasket({ isShowPopUp, onClose, product, onButtonAddToBasketCl
       isShowPopUp={isShowPopUp}
       isNarrow={false}
       onClose={onClose}
-      children={<PopUpAddToBasket product={product} onButtonAddToBasketClick={onButtonAddToBasketClick} />}
-    />
+    >
+      <PopUpAddToBasket product={product} onButtonAddToBasketClick={onButtonAddToBasketClick} />
+    </PopUpWrapper>
   );
 }
 

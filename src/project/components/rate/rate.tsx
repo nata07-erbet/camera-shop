@@ -2,10 +2,12 @@ import { ALL_STARS } from '../../const/const';
 
 type RateProps = {
   rating: number;
+  reviewCount: number
 }
 
 
-function Rate({ rating }: RateProps) {
+function Rate({ rating, reviewCount }: RateProps) {
+
   return (
     <div className="rate product-card__rate">
       {
@@ -27,7 +29,7 @@ function Rate({ rating }: RateProps) {
       }
       <p className="visually-hidden">Рейтинг: {rating}</p>
       <p className="rate__count">
-        <span className="visually-hidden">Всего оценок:</span>67
+        <span className="visually-hidden">Всего оценок:</span>{reviewCount}
       </p>
     </div>
   );

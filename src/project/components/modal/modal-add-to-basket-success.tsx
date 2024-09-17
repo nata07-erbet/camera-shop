@@ -8,12 +8,9 @@ type ModalAddToBasketSuccessProps = {
 
 function ModalAddToBasketSuccess({ isShowPopUp, onClose }: ModalAddToBasketSuccessProps) {
   return (
-    <PopUpWrapper
-      isShowPopUp={isShowPopUp}
-      isNarrow={false}
-      onClose={onClose}
-      children={<PopUpAddToBasketSuccess />}
-    />
+    <PopUpWrapper isShowPopUp={isShowPopUp} isNarrow={false} onClose={onClose}>
+      <PopUpAddToBasketSuccess />
+    </PopUpWrapper>
   );
 }
 

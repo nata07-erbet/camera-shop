@@ -40,7 +40,10 @@ function ProductCard({ product, onButtonBuyClick }: ProductCardProps) {
         </picture>
       </div>
       <div className="product-card__info">
-        <Rate rating={product.rating} />
+        <Rate
+          rating={product.rating}
+          reviewCount={product.reviewCount}
+        />
         <p className="product-card__title">
           {product.name}
         </p>

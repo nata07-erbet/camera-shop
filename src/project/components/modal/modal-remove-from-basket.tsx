@@ -14,8 +14,9 @@ function ModalRemoveFromBasket({ isShowPopUp, onClose, product }: ModalRemoveFro
       isShowPopUp={isShowPopUp}
       isNarrow={false}
       onClose={onClose}
-      children={<PopUpRemoveFromBasket product={product} />}
-    />
+    >
+      <PopUpRemoveFromBasket product={product} />
+    </PopUpWrapper>
   );
 }
 
